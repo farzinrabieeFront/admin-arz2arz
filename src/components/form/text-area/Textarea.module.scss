@@ -1,0 +1,45 @@
+.inputLabel {
+  color: #afb7cb;
+  margin-bottom: 0.5rem;
+}
+
+.textArea {
+  width: 100%;
+  border: 1px solid #ced4da;
+  background-color: #fff;
+  min-height: 42px;
+  border-radius: 0.25rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  outline: none !important;
+
+  &.dark {
+    background-color: #314054;
+    color: #fff;
+    border-color: #314054;
+  }
+}
+
+.prepend,
+.coinIcon,
+.rialImg,
+.inputBelowText,
+.inputErrorText {
+  position: absolute;
+}
+
+.inputErrorText {
+  bottom: 0;
+  left: 20px;
+  background: #fff;
+  &.dark {
+    background: rgb(31, 41, 64);
+    background: linear-gradient(
+      0deg,
+      rgba(31, 41, 64, 1) 0%,
+      rgba(49, 64, 83, 1) 100%
+    );
+  }
+}

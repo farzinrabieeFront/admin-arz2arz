@@ -1,0 +1,33 @@
+
+  .head {
+    .input {
+      padding: 0.5rem 1rem;
+      border: 1px solid #e5ebff;
+      position: relative;
+      padding-right: 40px;
+
+      input {
+        border: none;
+        background-color: transparent;
+        width: 100%;
+        height: 100%;
+        outline: none;
+
+        &::-moz-placeholder,
+        &::-webkit-input-placeholder {
+          opacity: 1;
+        }
+
+        &:focus,
+        &:active {
+          border: none;
+          outline: none;
+        }
+      }
+
+      .icon {
+        position: absolute;
+        right: 10px;
+      }
+    }
+  }

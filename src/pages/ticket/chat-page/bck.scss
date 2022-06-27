@@ -1,0 +1,230 @@
+@import '/src/assets/scss/mixins/responsive';
+
+.chatTicket {
+    // background: #1f2940;
+
+
+    .userMessage {
+        background-color: #e9eefe;
+        border-radius: 2px 20px 20px 20px;
+        min-width: 430px;
+        width: 35%;
+
+        p {
+            line-height: 28px;
+        }
+    }
+
+    .admin {
+        flex-direction: row !important;
+
+        .userMessage {
+            background-color: #e5ffe6;
+            border-radius: 20px 2px 20px 20px;
+        }
+
+    }
+}
+
+.scrollBox {
+    overflow-y: scroll;
+    // height: 650px;
+    width: 100%;
+}
+
+//////////////////////
+
+.chat {
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #f4f4f9;
+    border: 2px solid #eef1f5;
+
+    &.dark {
+        background-color: #314054;
+
+    }
+
+    .header {
+        background-color: #fff;
+
+        .icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50px;
+            color: #fff;
+            font-size: 1.6rem;
+            background: #874FC9;
+            background-color: #17c1e8;
+
+        }
+    }
+
+    .footer {
+        position: relative;
+
+        .formTicket {
+            background-color: #fff;
+        }
+
+        .previewUpload {
+            position: absolute;
+            width: 100%;
+            height: 97px;
+            top: -97px;
+            background-color: rgba($color: #141b2c, $alpha: 0.82);
+            padding: 1rem;
+            display: none;
+
+            &.show {
+                display: block;
+            }
+
+            .uploadedFiles {
+
+                border-right: 3px solid #ffc800;
+
+                .uploadedBox {
+                    width: 97px;
+                    position: relative;
+                    margin-right: 40px;
+                    margin-left: 32px;
+
+
+                    .delete {
+                        position: absolute;
+                        left: -4px;
+                        top: -2px;
+                        background: #ff305b;
+                        color: #141b2c;
+                        padding: 1px 1px;
+                        cursor: pointer;
+                        border-radius: 50px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    img {
+                        width: auto;
+                        height: 65px;
+                        border-radius: 5px;
+                        box-shadow: 0 0 4px rgba(151, 190, 255, 0.31);
+                    }
+
+
+                    &::after {
+                        content: "،";
+                        position: absolute;
+                        left: -20px;
+                        top: 50%;
+                        color: #141b2c;
+                        font-size: 2rem;
+                        left: -40px;
+                        top: 9%;
+                    }
+
+                    &:first-child {
+                        margin-right: 0;
+                    }
+
+                    &:last-child {
+                        &::after {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        .area {
+            width: 90%;
+
+            textarea {
+                border-radius: 10px;
+                outline: none !important;
+                width: 100%;
+            }
+        }
+
+        .icon {
+            // width: 10%;
+         
+
+            .rotate {
+                transform: rotateY(3.142rad);
+            }
+
+            .btns {
+                width: 60px;
+                text-align: center;
+            }
+
+            .submitBtn {
+                background: none;
+                border: none;
+                outline: none;
+                color: #b7bec8;
+            }
+
+            .attachFile {
+                position: relative;
+                color: #b7bec8;
+                .input {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    opacity: 0;
+
+                }
+            }
+        }
+    }
+}
+
+.drpBtn {
+    border: none;
+    background: none;
+
+    &::after {
+        display: none;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        background: none !important;
+        box-shadow: none !important;
+    }
+}
+
+
+//////////////////////
+
+
+
+
+@include breakpoint(md) {
+    .desc {
+        display: none !important;
+    }
+}
+
+@include breakpoint(sm) {
+
+    .uploadImage {
+        img {
+            height: auto;
+        }
+
+        &.uploadMore {
+            img {
+                width: 32px !important;
+                margin-top: 5px;
+            }
+        }
+    }
+}

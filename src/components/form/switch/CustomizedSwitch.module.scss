@@ -1,0 +1,65 @@
+.switchBox {
+  position: relative;
+  display: inline-block;
+  height: 20px;
+  width: 40px;
+
+  .switchInput {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .switchTrack {
+    position: absolute;
+    cursor: pointer;
+    border-radius: 30px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(58, 65, 111, .1);
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 3px;
+
+    &:before {
+      position: absolute;
+      content: "";
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      left: 2px;
+      top: 1.5px;
+      background-color: #fff;
+      -webkit-transition: 0.4s;
+      transition: 0.4s;
+    }
+  }
+
+  &.on {
+    .switchTrack {
+      background-color: rgba(77, 89, 114, 0.85);
+
+      &:before {
+        -webkit-transform: translateX(20px);
+        -ms-transform: translateX(20px);
+        transform: translateX(20px);
+        background-color: #fff;
+
+      }
+    }
+
+  }
+
+  input.switchInput:checked+.switchTrack {
+    background-color: #88B9E8;
+  }
+
+  input.switchInput:checked+.switchTrack:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+    background-color: #1976d2;
+  }
+}

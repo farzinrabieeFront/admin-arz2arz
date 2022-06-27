@@ -1,0 +1,243 @@
+$darkBlue: #15367d;
+$lightBlue: #17c1e8;
+$grayBlue: #70798e;
+$link: #0072ff;
+$gainsboro: #afb7cb;
+$lightGreen: #00c56e;
+$lightRed: #ff305b;
+$lighterBlue: #fafbfd;
+$gray: #707070;
+$yellow: #dfdcc9;
+$dark: #344767;
+$blue: #2a45e0;
+$orange: #ffc107;
+$mediumBlue : #97beff;
+$lightLink: #97beff;
+// $purple: #d3a1e6;
+$purple: #6059e8;
+$darkRed :#d9534f;
+
+.text- {
+  &black {
+    color: $dark;
+  }
+  &darkRed{
+    color: $darkRed
+  }
+  &mediumBlue {
+    color: $mediumBlue;
+  }
+
+  &tether {
+    color: #1ba27a;
+  }
+
+  &purple {
+    color: $purple;
+  }
+
+  &-success {
+    color: #00c56e !important;
+  }
+
+  &-danger {
+    color: $lightRed !important;
+  }
+
+  &white {
+    color: #fff;
+  }
+
+  &blue {
+    color: #25307a;
+  }
+
+  &warning {
+    color: #e7ae04;
+  }
+
+  &link {
+    color: #2a45e0;
+  }
+
+  &blue- {
+    &medium {
+      // color: #4f92f7;
+      color: #17a6c7;
+    }
+  }
+
+  &gray- {
+    &doubledark {
+      color: #1e1b18;
+    }
+
+    &dark {
+      color: #35322f;
+    }
+
+    &medium {
+      color: #5d5b59;
+    }
+
+    &regular {
+      color: #86868b !important;
+    }
+
+    &light {
+      color: #aeadac;
+    }
+
+    &pale {
+      color: #d7d6d5;
+    }
+
+    &blue {
+      color: #70798e;
+    }
+
+    &table {
+      color: #515154;
+
+      &:hover {
+        color: #515154;
+      }
+    }
+  }
+
+  &lightBlue {
+    color: $lightBlue;
+
+    &:hover {
+      color: $lightBlue;
+    }
+  }
+
+  &gainsboro {
+    color: $gainsboro;
+  }
+
+  &orange {
+    color: $orange;
+  }
+
+  &CurrencySelection {
+    color: #08acf3;
+  }
+}
+
+.bg- {
+  &transparent {
+    background-color: transparent;
+  }
+
+  &green {
+    background-color: #00c56e;
+  }
+
+  &lightRed {
+    background-color: $lightRed !important;
+  }
+
+  &lightBlue {
+    background-color: $lightBlue;
+  }
+
+  &darkBlue {
+    background-color: $darkBlue;
+  }
+
+  &pink {
+    background-color: #FF0080;
+  }
+
+  &orange {
+    background-color: #ff8e0c;
+  }
+
+  &Light {
+    background-color: #eff1f8;
+  }
+
+  &dark {
+    background-color: $dark;
+  }
+
+  &white {
+    background-color: #fff;
+  }
+}
+
+.darkBlue {
+  color: $darkBlue;
+}
+
+.bg-darkBlue {
+  background-color: $darkBlue;
+}
+
+.grayBlue {
+  color: $grayBlue;
+}
+
+.link {
+  color: $link;
+}
+
+.gainsboro {
+  color: $gainsboro;
+}
+
+.lightRed {
+  color: $lightRed;
+}
+
+// .bg-lightRed {
+//   background-color: $lightRed;
+// }
+
+.lighterBlue {
+  color: $lighterBlue;
+}
+
+.bg-lighterBlue {
+  background-color: $lighterBlue;
+}
+
+.bg-mediumBlue {
+  color: #141B2D;
+  background-color: $mediumBlue;
+}
+
+.gray {
+  color: $gray;
+}
+
+.bg-gray {
+  background-color: $gray;
+}
+
+.yellow {
+  color: $yellow;
+}
+
+.blue {
+  color: $blue;
+}
+
+.bg-blue {
+  background-color: $blue;
+}
+
+.hover-text-blue:hover {
+  color: #284dd8;
+}
+
+.mediumBlue {
+  color: $mediumBlue;
+}
+
+.lightLink {
+  color: $lightLink;
+
+}

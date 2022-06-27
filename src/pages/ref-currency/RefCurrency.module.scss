@@ -1,0 +1,44 @@
+.priceBox {
+    // background-image: linear-gradient(123deg, #abaebd, #3a416f);
+    min-height: 140px;
+    position: relative;
+    overflow: hidden;
+
+    &.buy {
+        background: linear-gradient(135deg, rgba(49, 0, 73, 1) 0%, rgba(0, 197, 110, 1) 100%);
+    }
+
+    &.sell {
+        background: linear-gradient(135deg, rgba(49, 0, 73, 1) 0%, rgba(255, 48, 91, 1) 100%);
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(../../assets/images/dollar-patterns.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        transform: rotateZ(180deg);
+        opacity: 0.6;
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(../../assets/images/dollar-patterns.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: bottom left;
+        opacity: 0.6;
+    }
+}
+
+ 

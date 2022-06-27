@@ -1,0 +1,26 @@
+$xs-size-wide-breakpoint: 575.98px;
+$sm-size-wide-breakpoint: 767.98px;
+$md-size-wide-breakpoint: 991.98px;
+$lg-size-wide-breakpoint:  1199.99px;
+
+@mixin breakpoint($size) {
+	@if $size == xs {
+		@media (max-width: $xs-size-wide-breakpoint) {
+			@content;
+		}
+	} @else if $size == sm {
+		@media (max-width: $sm-size-wide-breakpoint) {
+			@content;
+		}
+	} @else if $size == md {
+		@media (max-width: $md-size-wide-breakpoint) {
+			@content;
+		}
+	} @else if $size == lg {
+		@media (max-width: $lg-size-wide-breakpoint) {
+			@content;
+		}
+	} @else {
+        @warn "Breakpoint mixin supports: xs, sm, md, lg";
+	}
+}

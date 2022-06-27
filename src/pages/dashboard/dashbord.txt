@@ -1,0 +1,200 @@
+
+import react, { useEffect, useState } from "react";
+import { HiOutlineUsers, RiExchangeFundsLine, RiUserReceived2Line, FiChevronLeft } from 'react-icons/all';
+import { toast } from "react-toastify";
+import * as math from 'mathjs';
+import { Row, Col } from "react-bootstrap";
+
+import CustomizedBadge from "../../components/badge/Badge";
+import CustomizedTable from "../../components/table/Table";
+import { orderServices } from "../../services";
+import Styles from "./DashBoard.module.scss"
+import DateConvert from '../../utils/date';
+import { useTitle, useWebsocket } from "../../context";
+import MiniLoading from "../../components/loading/miniLoading/MiniLoading";
+
+const DashBoardPage = () => {
+  document.title = " ارز تو ارز | داشبورد";
+  const { setTitle } = useTitle();
+
+  const [liveOpenOrders, setLiveOpenOrders] = useState([]);
+  const [fiatOrders, setFiatOrders] = useState([]);
+  const [usersCount, setUsersCount] = useState(0);
+  const [onlineUsersCount, setOnlineUsersCount] = useState(0);
+  const [dailyOrdersCount, setDailyOrdersCount] = useState(0);
+
+  const { allOpenOrders, allUsers, onlineUsers, dailyOrders, lastFiatOrders = [] } = useWebsocket();
+
+  useEffect(() => {
+    setTitle(" ");
+  }, [])
+
+  useEffect(() => {
+    setLiveOpenOrders(allOpenOrders)
+  }, [allOpenOrders]);
+
+  useEffect(() => {
+    setFiatOrders(lastFiatOrders);
+  }, [lastFiatOrders]);
+
+
+  useEffect(() => {
+    setUsersCount(allUsers)
+  }, [allUsers]);
+
+  useEffect(() => {
+    setOnlineUsersCount(onlineUsers)
+  }, [onlineUsers]);
+
+  useEffect(() => {
+    setDailyOrdersCount(dailyOrders)
+  }, [dailyOrders]);
+
+
+
+  return (
+    <Row className="mt-4 justify-content-start align-items-stretch">
+      {/*  <MiniLoading type="cylon" color="#70798e" height={120} width={80} show={isLoading}/> */}
+      <Col lg={9}>
+        <Row className="h-100 align-items-start align-content-start">
+          <Col lg={4} md={4} sm={12} className="mb-3 mb-md-0">
+            <div className={`${Styles.userCounts} d-flex align-items-center justify-content-between p-4 border-radius-lg card-shadow bg-white`}>
+              <div className="d-flex align-items-center">
+                <span className={`${Styles.icon} bg-lightBlue shadow ml-3 border-radius-md center-content p-2`}><HiOutlineUsers size="25" /></span>
+                <span className=" yekan-Medium">تعداد کاربران سایت</span>
+              </div>
+              <div><span className="FaNum is-size-2">{new Number(usersCount).toLocaleString()}</span></div>
+            </div>
+          </Col>
+          <Col lg={4} md={4} sm={12} className="mb-3 mb-md-0">
+            <div className={`${Styles.userCounts} d-flex align-items-center justify-content-between p-4 border-radius-lg card-shadow bg-white`}>
+              <div className="d-flex align-items-center">
+                <span className={`${Styles.icon} bg-orange shadow ml-3 border-radius-md center-content p-2`}><RiUserReceived2Line size="25" /></span>
+                <span className=" yekan-Medium">تعداد کاربران آنلاین</span>
+              </div>
+              <div><span className="FaNum is-size-2">{new Number(onlineUsersCount).toLocaleString()}</span></div>
+            </div>
+          </Col>
+          <Col lg={4} md={4} sm={12}>
+            <div className={`${Styles.userCounts} d-flex align-items-center justify-content-between p-4 border-radius-lg card-shadow bg-white`}>
+              <div className="d-flex align-items-center">
+                <span className={`${Styles.icon} bg-pink shadow ml-3 border-radius-md center-content p-2`}><RiExchangeFundsLine size="25" /></span>
+                <span className=" yekan-Medium">تعداد سفارشات روز</span>
+              </div>
+              <div><span className="FaNum is-size-2"> {new Number(dailyOrdersCount).toLocaleString()} </span></div>
+            </div>
+          </Col>
+          <Col lg={12} className="mb-3 mb-md-0">
+            <div className="mt-4 p-4 border-radius-lg card-shadow bg-white h-100">
+              <div className="mb-3 border-bottom-light pb-3 d-flex align-items-center justify-content-between">
+                <h1 className="is-size-5 mb-2"> معاملات باز</h1>
+                <span><FiChevronLeft /></span>
+              </div>
+              <div>
+                <CustomizedTable
+                  header={
+                    <>
+                      <th>جفت ارز</th>
+                      <th className="text-center">تاریخ</th>
+                      <th className="text-center">نوع سفارش</th>
+                      <th className="text-center">مقدار پرداختی</th>
+                      <th className="text-center">قیمت اولیه</th>
+                      <th className="text-center">MarketID</th>
+                    </>
+                  }
+                  totalRecords={8}
+                  pageLimit={6}
+                // handleChangePage={(page) => setCurrentPage(page)}
+                >
+                  {liveOpenOrders.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>
+                          {item.pairedSymbol}
+                          {/* <span title="ارز مبدا">{item.baseAsset}</span><span className="mx-1">/</span><span title="ارز مقصد">{item.quoteAsset}</span> */}
+                        </td>
+                        <td className="text-center">{DateConvert.toShamsiDate(item.createdAt)}</td>
+                        <td className="text-center">
+                          {item.side === "BUY" ? (
+                            <CustomizedBadge pill className="no-min-width" variant="success">
+                              خرید
+                            </CustomizedBadge>
+                          )
+                            :
+                            (
+                              <CustomizedBadge pill className="no-min-width" variant="danger">
+                                فروش
+                              </CustomizedBadge>
+                            )}
+                        </td>
+                        <td className="text-center">{item.baseAmount}</td>
+
+                        <td className="text-center">{math.fix(item.firstPrice ? item.firstPrice : 0, 8)}</td>
+                        <td className="text-center">
+                          {item.marketId ?
+                            <span className={`  ltr justify-content-center  d-flex align-items-start `}
+
+                            >
+                              {item.marketId}
+                            </span>
+                            :
+                            null
+                          }
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </CustomizedTable>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </Col>
+      <Col lg={3}>
+        <div className="p-4 h-100 border-radius-lg card-shadow bg-white">
+          <div className="mb-3 border-bottom-light pb-3 d-flex align-items-center justify-content-between">
+            <h1 className="is-size-6 mb-0"> معاملات خرید و فروش</h1>
+            <span><FiChevronLeft /></span>
+          </div>
+          <div>
+            <CustomizedTable
+              header={
+                <>
+                  <th>ارز </th>
+                  <th className="text-center">نوع </th>
+                  <th className="text-center">مقدار پرداختی</th>
+                  <th className="text-center">قیمت دلار</th>
+                </>
+              }
+              totalRecords={8}
+              pageLimit={8}
+            // handleChangePage={(page) => setCurrentPage(page)}
+            >
+              {fiatOrders.map((item, index) => {
+                return (
+                  <tr key={index}>
+                    <td><span className="is-size-7">{item.spotAsset}</span></td>
+
+                    <td className="text-center">
+                      {item.side === "BUY" ?
+                        <span className="is-size-8 text-success">خرید</span>
+                        :
+                        <span className="is-size-8 lightRed">فروش</span>
+                      }
+                    </td>
+                    <td className="text-center"><span className="is-size-7">{new Number(item.baseAmount ? item.baseAmount : 0).toLocaleString()}</span></td>
+
+                    <td className="text-center">
+                      <span className="is-size-7">  {new Number(item.usdPrice ? item.usdPrice : 0).toLocaleString()} </span>
+                    </td>
+                  </tr>
+                );
+              })}
+            </CustomizedTable>
+          </div>
+        </div>
+      </Col>
+    </Row>
+  );
+};
+export default DashBoardPage;

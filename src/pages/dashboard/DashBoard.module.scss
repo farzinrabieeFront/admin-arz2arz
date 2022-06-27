@@ -1,0 +1,289 @@
+ .container {
+    .spotWallet {
+       flex: 0 0 18%;
+       max-width: 18%;
+       padding: 8px;
+    }
+
+    .profits {
+       flex: 0 0 45%;
+       max-width: 45%;
+       padding: 8px;
+    }
+
+    .thirdBox {
+       flex: 0 0 20%;
+       max-width: 20%;
+       padding: 0 8px;
+
+       .thirdContainer {
+          margin-left: -8px;
+          margin-right: -8px;
+       }
+
+       .usersCount {
+          flex: 0 0 33.333%;
+          max-width: 33.333%;
+          padding: 8px;
+
+          .box {
+             background-color: #D7EBFB;
+             color: #0090FF;
+             box-shadow: rgba(0, 0, 0, 0.15) 0.05px 0.05px 2.6px !important;
+          }
+       }
+
+       .onlineUsersCount {
+          flex: 0 0 33.333%;
+          max-width: 33.333%;
+          padding: 8px;
+
+          .box {
+             background-color: #D0EDE3;
+             color: #00C56E;
+             box-shadow: rgba(0, 0, 0, 0.15) 0.05px 0.05px 2.6px !important;
+          }
+       }
+
+       .dailyOrdersCount {
+          flex: 0 0 33.333%;
+          max-width: 33.333%;
+          padding: 8px;
+
+          .box {
+             background-color: #FCF5EA;
+             color: #ff8e0c;
+             box-shadow: rgba(0, 0, 0, 0.15) 0.05px 0.05px 2.6px !important;
+          }
+       }
+
+       .fiatWallet {
+          flex: 0 0 100%;
+          max-width: 100%;
+          padding: 8px;
+       }
+    }
+
+    .fiatOrders {
+       flex: 0 0 17%;
+       max-width: 17%;
+       padding: 8px;
+    }
+
+    .onlineAdmins {
+       flex: 0 0 18%;
+       max-width: 18%;
+       padding: 8px;
+    }
+
+    .usdtBox {
+       flex: 0 0 35%;
+       max-width: 35%;
+       padding: 0 8px;
+
+       .usdtContainer {
+          margin-left: -8px;
+          margin-right: -8px;
+
+          .fullwidth {
+             flex: 0 0 100%;
+             max-width: 100%;
+             padding: 8px;
+
+             .box {
+                min-height: 140px;
+             }
+          }
+
+          .usdtItems {
+             flex: 0 0 33.333%;
+             max-width: 33.333%;
+             padding: 8px;
+
+             .box {
+                background-color: #fff;
+
+                .icon {
+                   width: 70px;
+                   height: 70px;
+                   border-radius: 100%;
+                   padding: 15px;
+
+
+                   img {
+                      width: 100%;
+                      height: auto;
+                   }
+                }
+
+                &.buyPrice {
+                   border: 1px solid #a3e2c6;
+                   background: rgb(214, 238, 227);
+                   background: linear-gradient(0deg, rgba(214, 238, 227, 1) 0%, rgba(255, 255, 255, 1) 100%);
+
+                   .icon {
+                      background-color: #00c56e;
+                      border: 1px solid #a3e2c6;
+                   }
+                }
+
+                &.sellPrice {
+                   border: 1px solid #ffdae1;
+                   background: rgb(255, 218, 225);
+                   background: linear-gradient(0deg, rgba(255, 218, 225, 1) 0%, rgba(255, 255, 255, 1) 100%);
+
+                   .icon {
+                      background-color: #ff305b;
+                      border: 1px solid #ffdae1;
+                   }
+                }
+
+                &.sellLimit {
+                   //  border: 1px solid #fad5aa;
+                   border: 1px solid #a6cbe8;
+                   background: rgb(223, 241, 255);
+                   background: linear-gradient(0deg, rgba(223, 241, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+
+                   .icon {
+                      //  background-color: #ff8e0c;
+                      background-color: #0090ff;
+                      border: 1px solid #a6cbe8;
+                   }
+                }
+             }
+          }
+       }
+    }
+
+
+    .vasat {
+       flex: 0 0 27%;
+       max-width: 27%;
+       padding: 8px;
+    }
+
+    .marketOrders {
+       flex: 0 0 20%;
+       max-width: 20%;
+       padding: 8px;
+    }
+ }
+
+ .mainCurrencies {
+
+    img {
+       width: 22px;
+       height: 22px;
+       border-radius: 100%;
+    }
+
+    padding: 5px 10px;
+    border-radius: 5px;
+
+    &.eth {
+
+       //  color: #627eea;
+       img {
+          margin-right: 4px;
+       }
+    }
+
+    &.btc {
+
+       //  color: #f7931a;
+       img {
+          margin-right: 4px;
+       }
+    }
+
+    &.usdt {
+       //  color: #26a17b;
+       //  background-color: rgba(242, 245, 255, 1);
+       background-color: rgba(125, 142, 202, 0.13);
+
+       img {
+          width: 30px;
+          height: 30px;
+       }
+    }
+
+    &.xrp {
+       img {
+          margin-right: 4px;
+       }
+
+       //  color: #23292f;
+    }
+ }
+
+ .dark {
+    .mainCurrencies {
+       &.xrp {
+          //  color: #a7aaac;
+       }
+    }
+
+
+    .usdtBox {
+       .usdtContainer {
+          .usdtItems {
+             .box {
+                &.buyPrice {
+                   border: 1px solid #153839;
+                   background: linear-gradient(0deg, rgba(0, 197, 110, 0.25) 0%, rgba(255, 255, 255, 0.04) 100%);
+
+                   .icon {
+                      border: 1px solid #153839;
+                   }
+                }
+
+                &.sellPrice {
+                   border: 1px solid #422238;
+                   background: linear-gradient(0deg, rgba(255, 48, 91, 0.25) 0%, rgba(255, 255, 255, 0.04) 100%);
+
+                   .icon {
+                      border: 1px solid #422238;
+                   }
+                }
+
+                &.sellLimit {
+                   border: 1px solid #143152;
+                   background: linear-gradient(0deg, rgba(0, 144, 255, 0.25) 0%, rgba(255, 255, 255, 0.04) 100%);
+
+                   .icon {
+                      border: 1px solid #143152;
+                   }
+
+                }
+             }
+          }
+       }
+    }
+
+
+
+    .thirdBox {
+       .usersCount {
+          .box {
+             background-color: rgba(0, 142, 255, 0.13);
+             border: 1px solid #0d5e9c;
+          }
+       }
+
+       .onlineUsersCount {
+          .box {
+             background-color: rgba(0, 197, 110, 0.13);
+             border: 1px solid #156240;
+          }
+       }
+
+       .dailyOrdersCount {
+          .box {
+             background-color: rgba(255, 142, 12, 0.13);
+             border: 1px solid #7a4c17;
+          }
+       }
+    }
+
+    //  background-color: rgb(0 142 255 / 18%);
+ }

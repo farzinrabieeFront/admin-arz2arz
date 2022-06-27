@@ -1,0 +1,31 @@
+@import '/src/assets/scss/mixins/responsive';
+
+.CustomizedDatePicker {
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    outline: none !important;
+    position: relative;
+    padding-left: 40px;
+    min-height: 42px;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    cursor: pointer;
+
+    &.dark {
+        background-color: #314054;
+        color: #fff;
+        border: 1px solid #314054;
+    }
+}
+
+.icon {
+    position: absolute;
+    bottom: 9px;
+    left: 10px;
+}
+
+@include breakpoint(sm) {
+    .inputLabel {
+        font-size: 9px !important;
+    }
+}

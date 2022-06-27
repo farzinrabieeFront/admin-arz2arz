@@ -1,0 +1,25 @@
+.header {
+    border-bottom: 1px solid #e7e7e7;
+}
+ 
+.bchName {
+    transition: all 0.3s ease-in;
+
+    &.active {
+        color: #ffffff;
+        background: #70798e;
+    }
+}
+
+.networks {
+    background-color: #f8f9fa;
+}
+
+.containerNetworks{
+    overflow-x: auto;
+}
+
+.tabNetworks{
+    min-width: max-content;
+    position: relative;
+}

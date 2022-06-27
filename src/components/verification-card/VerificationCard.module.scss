@@ -1,0 +1,52 @@
+.verifyCard {
+    min-height: 145px;
+    background: url(../../assets/images/VerificationCard-pattern.png),
+        linear-gradient(90deg, rgba(17,220,202,1) 0%, rgba(19,209,197,1) 0%, rgba(47,4,107,1) 100%);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: contain;
+    position: relative;
+
+    &:after {
+        position: absolute;
+        content: "";
+        right: 0;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        width: 30%;
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-size: contain;
+        background-image: url(../../assets/images/VerificationCard-pattern-before.png);
+    }
+}
+
+.button {
+    background: rgb(255, 228, 40);
+    background: linear-gradient(90deg, rgba(255, 228, 40, 1) 0%, rgba(254, 206, 0, 1) 100%) !important;
+    display: flex;
+    position: relative;
+    align-items: center;
+    padding-right: 35px;
+    overflow: hidden;
+    border: none !important;
+    z-index: 9;
+
+    .svg {
+        background-color: rgba($color: #000000, $alpha: 0.2);
+        right: 0px;
+        padding: 0 5px;
+        color: #fff;
+        width: 30px;
+        height: 100%;
+        position: absolute;
+    }
+}
+
+.steps{
+
+    .svg{
+        opacity: 0.4;
+    }
+}

@@ -1,0 +1,50 @@
+.container {
+  overflow-x: auto;
+
+ 
+
+  &::-webkit-scrollbar {
+    height: 3px;
+    opacity: 1;
+    display: block;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 0px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 0px;
+    background-color: #e7e7f0;
+  }
+}
+
+.tabContainer {
+  min-width: max-content;
+  position: relative;
+
+  li {
+    margin-left: 0.5rem;
+    z-index: 1;
+  }
+
+  .movingTab {
+    // background-color: #fff;
+    position: absolute;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 5px 1px #ddd;
+    -o-transition: width 0.5s ease, left 0.5s ease, top 0.5s ease,
+      height 0.5s ease;
+    -moz-transition: width 0.5s ease, left 0.5s ease, top 0.5s ease,
+      height 0.5s ease;
+    -webkit-transition: width 0.5s ease, left 0.5s ease, top 0.5s ease,
+      height 0.5s ease;
+    transition: width 0.5s ease, left 0.5s ease, top 0.5s ease, height 0.5s ease;
+    z-index: -2;
+
+    &.dark {
+      box-shadow: 0 1px 5px 1px #0d1018;
+    }
+  }
+}

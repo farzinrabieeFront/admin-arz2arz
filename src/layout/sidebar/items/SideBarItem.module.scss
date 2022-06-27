@@ -1,0 +1,115 @@
+.item{
+  margin-left: -10px;
+  margin-right: -10px;
+  display: flex;
+   flex-wrap: wrap;
+}
+
+.sideMenu {
+  .icons {
+    width: 32px;
+    height: 32px;
+    margin-left: 5px;
+  }
+
+  &.active {
+    box-shadow: 0 20px 27px 0 rgba(0, 0, 0, 0.05);
+    border-radius: 0.5rem;
+    background: #fff;
+
+    .icons {
+      background: linear-gradient(310deg, #17c1e8, #17c1e8) !important;
+      // background:linear-gradient(310deg, #163bae, #26abc9) !important;
+      
+      color: #fff;
+    }
+  }
+
+  .rotate {
+    transform: rotate(-90deg);
+  }
+
+  &.dark {
+    &.active {
+      background: #1f2940;
+    }
+  }
+}
+
+.subItem {
+  list-style-type: square;
+  width: 100%;
+  max-height: 0;
+  padding: 0 1rem;
+
+  .sideMenu {
+    position: relative;
+    padding-right: 2.3rem;
+
+    &:before {
+      content: "";
+      position: absolute;
+      right: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 5px;
+      width: 5px;
+      border-radius: 1.5rem;
+      background: rgba(58, 65, 111, .5);
+    }
+
+    &.dark {
+      &:before {
+        background: #9498a1;
+      }
+    }
+
+    &.active {
+      a {
+        color: #3a416f !important;
+        font-weight: 600;
+      }
+
+      &:before {
+        background: #3a416f !important;
+      }
+
+      &.dark {
+        background-color: transparent;
+        a {
+          color: #17c1e8 !important;
+          font-weight: 600;
+        }
+
+        &:before {
+          background: #17c1e8 !important;
+        }
+      }
+    }
+
+  }
+
+  &.none {
+    overflow: hidden;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    -webkit-transition: max-height .5s ease, opacity .5s ease;
+    transition: max-height .5s ease, opacity .5s ease;
+  }
+
+  &.block {
+    max-height: 200px;
+    -webkit-transition: max-height .5s ease, opacity .5s ease;
+    transition: max-height .5s ease, opacity .5s ease;
+  }
+
+  li {
+    list-style-type: square;
+    padding-right: 0rem;
+  }
+
+  .active {
+    box-shadow: none;
+    background-color: transparent;
+  }
+}

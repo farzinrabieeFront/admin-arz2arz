@@ -1,0 +1,24 @@
+.header{
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.binanceId {
+    position: relative;
+    padding-left: 18px;
+    color: #F0B90B;
+    text-decoration: underline;
+
+    &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        background-image: url(../../../assets/images/binance_logo.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 15px;
+        height: 15px;
+    }
+}
+.rows{
+    background-color: #eff2f5;
+}

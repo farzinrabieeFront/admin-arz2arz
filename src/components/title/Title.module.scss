@@ -1,0 +1,17 @@
+.titleCard {
+  //   border-right: 4px solid #ccc3e8;
+  // border-right:3px solid #2a45e0;
+  // border-right: 3px solid #E6EBFD;
+
+  .line {
+    min-height: 100% !important;
+    width: 20px;
+    background: linear-gradient(0deg, rgba(61, 233, 208, 1) 16%, rgba(0, 24, 119, 1) 75%);
+  }
+
+  .content {
+    ul {
+      list-style-type: disc !important;
+    }
+  }
+}

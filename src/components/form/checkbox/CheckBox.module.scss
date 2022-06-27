@@ -1,0 +1,29 @@
+.formCheck {
+    padding-left: 0rem !important;
+    padding-right: 1.25rem !important;
+
+    input {
+        margin-left: 0rem !important;
+        margin-right: -1.25rem !important;
+        border-radius: 10px;
+    }
+}
+
+.CheckBox {
+
+    // background-color: #1F2940;
+    min-height: 42px;
+    border: 1px solid #ced4da;
+    // color: #97beff;
+    border-radius: 0.25rem;
+    padding: 0.375rem 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.dark {
+        background-color: #314054;
+        color: #fff;
+        border-color: #314054;
+    }
+}

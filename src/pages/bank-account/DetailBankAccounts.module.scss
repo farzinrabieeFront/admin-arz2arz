@@ -1,0 +1,166 @@
+@import "../../assets/scss/mixins/responsive";
+
+.bg {
+   
+  
+    .info {
+        position: absolute;
+        border-radius: 10px;
+        padding: 20px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 90%;
+        bottom: -40px;
+        z-index: 9;
+    }
+}
+
+.titleBlur {
+    width: 92%;
+    margin: 0 auto;
+}
+
+.avatar {
+    border-radius: 0.75rem;
+    flex: 0 0 74px;
+    max-width: 74px;
+    height: 74px;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 74px;
+    }
+}
+
+
+// .files {
+//     .items {
+//         .img {
+//             cursor: pointer;
+//             width: 150px;
+//             position: relative;
+//             display: flex;
+//             align-items: center;
+//             justify-content: center;
+
+//             &:after {
+//                 content: "";
+//                 width: 100%;
+//                 height: 100%;
+//                 position: absolute;
+//                 top: 0;
+//                 right: 0;
+//                 left: 0;
+//                 background-color: rgba($color: #000000, $alpha: 0.50);
+//             }
+
+//             span {
+//                 position: absolute;
+//                 z-index: 99;
+//             }
+
+//             img {
+//                 width: 100%;
+//             }
+//         }
+//     }
+// }
+
+.rejectBtn {
+    width: 70px;
+}
+
+.msgArea {
+    width: calc(100% - 70px);
+}
+
+.verified {
+    border-top: 2px dashed rgba(151, 190, 255, 0.23);
+}
+
+.msgReject {
+    background-color: rgb(232, 234, 240);
+    padding: 1rem;
+    border-radius: 30px 0 30px 30px;
+}
+
+.DropdownButton {
+    .item {
+        position: relative;
+
+        &:hover {
+            background-color: #f0f4ff !important;
+        }
+    }
+}
+
+.textarea {
+    textarea {
+        outline: none !important;
+        width: 100%;
+    }
+}
+
+.header {
+    background-color: #141B2D;
+    border-radius: 10px;
+}
+
+.status {
+    position: relative;
+    padding-right: 1.2rem;
+
+    &:before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        background-color: #fff;
+        position: absolute;
+        right: 0;
+        top: 5px;
+        border-radius: 100%;
+    }
+
+    &.pending {
+        color: #ffc107;
+
+        &:before {
+            background-color: #ffc107;
+        }
+    }
+
+    &.approved {
+        color: #00c56e;
+
+        &:before {
+            background-color: #00c56e;
+        }
+    }
+
+    &.rejected {
+        color: #ff305b;
+
+        &:before {
+            background-color: #ff305b;
+        }
+    }
+}
+
+
+@include breakpoint(sm) {
+    .avatar {
+      display: none !important;
+    }
+  
+    .bg {
+      .info {
+        position: relative;
+        width: 100%;
+        bottom: auto;
+        margin-top: 1rem;
+      }
+    }
+  }
+  

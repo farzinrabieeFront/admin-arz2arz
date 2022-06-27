@@ -1,0 +1,259 @@
+@import "../../../assets/scss/mixins/responsive";
+
+.container {
+  border: 1px solid #eaebee;
+  border-radius: 8px;
+  overflow: hidden;
+  &.dark {
+    border-color: #354361;
+  }
+}
+
+.side {
+  width: 240px;
+  position: sticky;
+  top: 0;
+  background-color: #f8f9fa;
+}
+
+.chat {
+  width: calc(100% - 240px);
+
+  .box {
+    border-right: 1px solid #eaebee;
+    position: relative;
+
+    .body {
+      overflow: hidden;
+      overflow-y: scroll;
+      padding: 1rem;
+      padding-bottom: 4rem;
+
+      &::-webkit-scrollbar {
+        width: 3px;
+        opacity: 1;
+        display: block;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 0px;
+      }
+
+      &::-webkit-scrollbar-track {
+        border-radius: 0px;
+        background-color: #e7e7f0;
+      }
+    }
+    .message {
+      min-width: 430px;
+      width: 35%;
+    }
+
+    .admin {
+      .message {
+        background-color: #e9eefe;
+        border-radius: 20px 2px 20px 20px;
+      }
+    }
+
+    .user {
+      flex-direction: row-reverse;
+      .message {
+        background-color: #fef1e9;
+        border-radius: 2px 20px 20px 20px;
+      }
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background-color: #fff;
+      z-index: 99;
+
+      .formTicket {
+        background-color: #fff;
+      }
+
+      .previewUpload {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        bottom: 82px;
+        background-color: rgba($color: #141b2c, $alpha: 0.52);
+        padding: 1rem;
+        display: none;
+
+        &.show {
+          display: block;
+        }
+
+        .uploadedFiles {
+          border-right: 3px solid #ffc800;
+
+          .uploadedBox {
+            width: 80px;
+            position: relative;
+            margin-right: 10px;
+            margin-left: 10px;
+
+            .delete {
+              position: absolute;
+              left: -4px;
+              top: -2px;
+              background: #ff305b;
+              color: #141b2c;
+              padding: 1px 1px;
+              cursor: pointer;
+              border-radius: 50px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+
+            img {
+              width: 80px;
+              height: 45px;
+              border-radius: 5px;
+              box-shadow: 0 0 4px rgba(151, 190, 255, 0.31);
+            }
+
+            &:first-child {
+              margin-right: 0;
+            }
+
+            &:last-child {
+              &::after {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+
+      .area {
+        width: 90%;
+
+        textarea {
+          border-radius: 10px;
+          outline: none !important;
+          width: 100%;
+        }
+      }
+
+      .icon {
+        .rotate {
+          transform: rotateY(3.142rad);
+        }
+
+        .btns {
+          width: 60px;
+          text-align: center;
+        }
+
+        .submitBtn {
+          background: none;
+          border: none;
+          outline: none;
+          color: #b7bec8;
+        }
+
+        .attachFile {
+          position: relative;
+          color: #b7bec8;
+          .input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            right: 0;
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.respHeader {
+  display: none;
+}
+
+.dark {
+  .side {
+    background-color: #141b2d;
+  }
+
+  .chat {
+    .box {
+      border-right-color: #354361;
+      .admin {
+        .message {
+          background-color: #434d63;
+          color: #fff;
+        }
+      }
+
+      .user {
+        .message {
+          background-color: #372d39;
+          color: #fff;
+        }
+      }
+
+      .footer {
+        background-color: #141b2d;
+        .formTicket {
+          background-color: #141b2d;
+        }
+      }
+    }
+  }
+}
+@include breakpoint(md) {
+  .chat {
+    .box {
+      .message {
+        min-width: auto;
+        width: 95%;
+      }
+    }
+  }
+}
+@include breakpoint(sm) {
+  .chat {
+    width: 100%;
+    .box {
+      border: none;
+      .footer {
+        position: fixed;
+      }
+      .body {
+        padding-bottom: 1rem;
+        &::-webkit-scrollbar {
+          width: 5px;
+          opacity: 1 !important;
+          display: block !important;
+          -webkit-appearance: none;
+        }
+      }
+    }
+  }
+  .side {
+    display: none;
+  }
+  .respHeader {
+    display: block;
+    width: 100%;
+    background-color: #00103d;
+  }
+  .dark {
+    .respHeader {
+      background-color: #141b2d;
+    }
+  }
+}

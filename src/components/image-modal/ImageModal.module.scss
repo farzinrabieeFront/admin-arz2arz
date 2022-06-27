@@ -1,0 +1,31 @@
+.modal {
+  background-color: rgba(0, 0, 0, 0.1);
+
+  .modalContent {
+    overflow: hidden;
+    border: none;
+
+    .modalBody {
+      border: none;
+      padding: 1.5rem;
+      img{
+        width: auto;
+        height: auto;
+      }
+    }
+
+    .modalFooter {
+      border: none;
+      background-color: #F4F7FA;
+      justify-content: flex-start;
+    }
+  }
+}
+
+.close {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  color: #141B2D ;
+  font-size: 0.9rem;
+}

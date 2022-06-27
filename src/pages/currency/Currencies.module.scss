@@ -1,0 +1,35 @@
+.currency {
+    .icon {
+        color: #ff8e0c;
+
+        img {
+            width: 25px;
+            height: 25px;
+            min-width: 25px;
+            border-radius: 100%;
+        }
+    }
+}
+
+.blockchains {
+    position: relative;
+
+    &::after {
+        content: "،";
+        margin: 0 5px;
+    }
+
+    &:last-child {
+        &::after {
+            display: none;
+        }
+    }
+}
+
+.DropdownButton {
+    .dropdown-toggle {
+        &::after {
+            display: none;
+        }
+    }
+}

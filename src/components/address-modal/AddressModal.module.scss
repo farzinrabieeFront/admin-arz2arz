@@ -1,0 +1,18 @@
+.tabs {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.blockchain {
+    cursor: pointer;
+
+    &.active {
+
+        color: #ffffff !important;
+        background: #70798e;
+    }
+}
+
+.boxes{
+    background-color: #f8f9fa;
+}

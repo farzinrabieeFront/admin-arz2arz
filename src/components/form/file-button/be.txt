@@ -1,0 +1,111 @@
+import { useEffect, useRef, useState } from "react";
+import Styles from './FileButton.module.scss';
+
+import uploadPoster from "../../../assets/images/uploadPoster.png";
+import uploadList from "../../../assets/images/uploadList.png";
+import uploadVideo from "../../../assets/images/uploadVideo.png";
+import { RiDeleteBin6Line } from "react-icons/all";
+
+const CustomizedFileButton = ({
+  children,
+  title,
+  poster,
+  video,
+  name,
+  data,
+  disableDelete,
+  handleSetFiles = () => false,
+  handleDeleteFiles = () => false,
+  errorMassage,
+  image,
+  ...rest
+}) => {
+
+  const [imageFile, setImageFile] = useState()
+  const [urlImage, setUrlImage] = useState()
+  useEffect(() => {
+    if (data) {
+      console.log('dataaaaaaa:', data);
+      setUrlImage(`http://194.5.192.82:4004/api/v1${data}`)
+    }
+  }, [data])
+  return (
+    <>
+      {
+        urlImage ?
+          (
+            <div className={`${Styles.uploadImage} ${Styles.uploaded}`}>
+              <img src={urlImage} alt="" />
+              {!disableDelete ?
+                <span
+                  className={`${Styles.button} pointer bg-lightRed rounded-pill px-2 py-1 is-size-6 text-white`}
+                  onClick={() => {
+                    setUrlImage()
+                    handleDeleteFiles(imageFile)
+                  }}
+                >
+                  <RiDeleteBin6Line className="ml-1" />
+                  <span>حذف</span>
+                </span>
+                :
+                null
+              }
+              <span className={`${Styles.label} text-blue-medium is-size-5 yekan-ExtraBold `}>
+                {
+                  poster ?
+                    <span>  {title}  (عکس کوچک)</span>
+                    :
+                    image ?
+                      <span> {title}  (عکس بزرگ)</span>
+                      :
+                      <span> {title} </span>
+                }
+              </span>
+            </div>
+          )
+          :
+          (
+            <div className={`${Styles.uploadImage} ${Styles.uploadMore} ${errorMassage ? Styles.uploadError : null}  pointer`}>
+              <input type="file" name={name} className={Styles.input}
+                onChange={
+                  (e) => {
+                    setUrlImage(URL.createObjectURL(e.target.files[0]))
+                    setImageFile(e)
+                    handleSetFiles(e)
+                  }
+                }
+
+              />
+              <div className="col-12 px-2 text-center align-items-center d-flex justify-content-center">
+                {
+                  poster ?
+                    <img src={uploadList} alt="" />
+                    :
+                    video ?
+                      <img src={uploadVideo} alt="" />
+                      :
+                      <img src={uploadPoster} alt="" />
+                }
+              </div>
+              <div className="col-12 px-2 mt-2">
+                <p className={`${errorMassage ? "text-danger " : "text-blue-medium "} is-size-5 yekan-ExtraBold mb-0 text-center`}>
+                  {
+                    errorMassage ?
+                      <>
+                        افزودن {title} الزامی میباشد
+                      </>
+                      :
+                      <>
+                        افزودن {title}
+                      </>
+                  }
+                </p>
+              </div>
+            </div>
+          )
+      }
+
+    </>
+  );
+};
+export default CustomizedFileButton;

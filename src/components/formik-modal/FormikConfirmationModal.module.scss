@@ -1,0 +1,16 @@
+.modal {
+  background-color: rgba(0, 0, 0, 0.1);
+
+  .modalContent {
+    overflow: hidden;
+    border: none;
+    .modalBody {
+      border: none;
+    }
+    .modalFooter {
+      border: none;
+      background-color: #F4F7FA;
+      justify-content: flex-start;
+    }
+  }
+}

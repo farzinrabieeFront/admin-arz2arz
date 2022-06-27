@@ -1,0 +1,294 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { useHistory } from "react-router-dom";
+import Styles from "./ChatTicketPage.module.scss";
+import { Dropdown } from "react-bootstrap";
+import { HiDotsHorizontal, ImAttachment, MdSend, IoMdClose, RiUser2Line } from "react-icons/all";
+import { Form, Formik, FastField } from "formik";
+import DateConvert from '../../../utils/date'
+//components
+import CustomizedButton from "../../../components/form/button/Button";
+import CustomizedBadge from "../../../components/badge/Badge";
+import CustomizedModal from "../../../components/modal/Modal";
+import CustomizedTextarea from "../../../components/form/text-area/Textarea";
+import { ticketServices } from "../../../services";
+import { useTheme, useTitle } from "../../../context";
+import useWindowDimensions from "../../../components/windowDimension/useWindowDimensions ";
+import { ticketValidator } from "../../../utils/validators";
+import { Toastify } from "../../../utils";
+
+export default function ChatTicketPage() {
+  document.title = "ارز تو ارز | پاسخ به تیکت";
+  const { id } = useParams();
+  const history = useHistory();
+  const { theme } = useTheme();
+  const { height } = useWindowDimensions()
+  const { setTitle } = useTitle();
+  const [ticketMessage, setTicketMessage] = useState({});
+  const [userInfo, setUserInfo] = useState(false);
+  const [uploadedImage, setUploadedImage] = useState([]);
+
+  const gotoBottom = () => {
+    let element = document.getElementById("scroll-box");
+    element.scrollTop = element.scrollHeight;
+  }
+  useEffect(() => {
+    if (id) {
+      getTicketMessage(id)
+    }
+  }, [])
+
+  useEffect(() => {
+    setTitle("پاسخ به تیکت");
+  }, [])
+
+  // get ticketMessage 
+  const getTicketMessage = async (id) => {
+    try {
+      const { data, status } = await ticketServices.detail(id)
+      if (status === 200 && data.success) {
+        setTicketMessage(data.data);
+        gotoBottom()
+      }
+    } catch (error) {
+      Toastify.error(error.message)
+    }
+  }
+
+  // create ticketMessage 
+  const createTicketMessage = async (vals) => {
+    let formData = new FormData();
+
+    uploadedImage.forEach((image) => {
+      formData.append(`images`, image)
+    });
+
+    for (let key in vals) {
+      formData.append(key, vals[key])
+    }
+    formData.append("ticket", id)
+    // formData.append("customer", "61488fa5595fb23988d26e3d")
+
+    try {
+      const { data, status } = await ticketServices.create(formData)
+      if (status === 200 && data.success) {
+        Toastify.success(data.message)
+        getTicketMessage(id)
+        setUploadedImage([])
+
+      }
+    } catch (error) {
+      Toastify.error(error.message)
+    }
+  }
+
+  // close Ticket
+
+  const closeTicket = async (id) => {
+    try {
+      let body = {
+        status: "بسته شده"
+      }
+      const { data, status } = await ticketServices.changeStatus(id, body);
+      if (status === 200 && data.success) {
+        Toastify.success(data.message)
+        history.push("/tickets/")
+      }
+    } catch (error) {
+      Toastify.error(error.message)
+    }
+  }
+  const openTicket = async (id) => {
+    try {
+      let body = {
+        status: "در حال بررسی"
+      }
+      const { data, status } = await ticketServices.changeStatus(id, body);
+      if (status === 200 && data.success) {
+        Toastify.success(data.message)
+        getTicketMessage(id)
+      }
+    } catch (error) {
+      Toastify.error(error.message)
+    }
+  }
+
+  const handleRemoveImg = (id) => {
+    let listImg = uploadedImage.filter((item, index) => index !== id);
+    setUploadedImage(listImg);
+
+  }
+
+  return (
+    <div className="mt-4 px- ">
+      <CustomizedModal show={userInfo} >
+        <div className="mb-3 text-adrkBlue yekan-Bold border-bottom pb-3 mb-3"><span className="d-flex align-items-center"><RiUser2Line size="20" className="ml-2 text-lightBlue" /> اطلاعات کاربر</span></div>
+        <div className="row">
+          <div className="col-12 mb-3 d-flex align-items-center">
+            <span className=" ml-2 gainsboro is-size-6">ایمیل :</span>
+            <span className="text-gray-blue text-Bold yekan-Bold ">
+              {ticketMessage.customer?.email}
+            </span>
+            <CustomizedBadge className="mr-2 is-size-7" pill variant={ticketMessage.customer?.isVerified ? "success" : "danger"}  >
+              {ticketMessage.customer?.isVerified ?
+                "احراز شده"
+                :
+                "احراز نشده"
+              }
+            </CustomizedBadge>
+          </div>
+          <div className="col-12 mb-3">
+            <span className=" ml-2 gainsboro is-size-6">موبایل :</span>
+            <span className="text-gray-blue text-Bold yekan-Bold FaNum">{ticketMessage.customer?.mobile}</span>
+          </div>
+
+        </div>
+        <div className="border-top pt-3 text-left">
+          <CustomizedButton variant="lightRed" className="btn" onClick={() => setUserInfo(false)}>تایید</CustomizedButton>
+        </div>
+      </CustomizedModal>
+
+      <div className={`${Styles.chat} ${Styles[theme]} h-100`}>
+        <div className={`${Styles.header} py-3 d-flex justify-content-between align-items-center`}>
+          <div className="col-10 d-flex align-items-center">
+            <div className={`${Styles.icon} en ml-3 d-flex align-items-center justify-content-center is-size-3`}>{ticketMessage.customer?.email.slice(0, 1).toLocaleUpperCase()}</div>
+            <div>
+              <h2 className="is-size-4 mb-2  d-flex align-items-center">
+                {ticketMessage.customer?.email}
+                {/* {ticketMessage && ticketMessage.customer && ticketMessage.customer instanceof Array && ticketMessage.customer.length && ticketMessage.customer[0].email } */}
+
+              </h2>
+              <p className="mb-0 is-size-7 d-flex align-items-center">
+                عنوان پیام :{" "}
+                {ticketMessage.title}
+
+              </p>
+            </div>
+          </div>
+          <div className="col-2">
+            <Dropdown className="text-left">
+              <Dropdown.Toggle variant="light" className={`${Styles.drpBtn} p-0`}>
+                <span title="منو" className="pointer"><HiDotsHorizontal size="35" /></span>
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item className="is-size-6 text-right mb-1" onClick={() => setUserInfo(prev => !prev)}>اطلاعات کاربر</Dropdown.Item>
+                {ticketMessage.status === "بسته شده" ?
+
+                  <Dropdown.Item className="is-size-6 text-right" onClick={() => openTicket(ticketMessage._id)}>باز کردن تیکت</Dropdown.Item>
+                  :
+                  <Dropdown.Item className="is-size-6 text-right" onClick={() => closeTicket(ticketMessage._id)}>بستن تیکت</Dropdown.Item>
+                }
+
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
+        </div>
+        <div className={Styles.body}>
+          <div
+            className={`${Styles.chatTicket} py-3 pr-0 pl-2 d-flex flex-wrap`}
+          >
+            <div id="scroll-box" className={Styles.scrollBox} style={{ height: height - 320 }}>
+              <div className={`${ticketMessage?.role === "admin" ? Styles.admin : null} 
+                    d-flex flex-wrap flex-row-reverse align-items-start w-100 mb-4 px-3`}>
+                <div className={`${Styles.userMessage} shadow p-3`}>
+                  <p className="mb-2 text-blue is-size-6">
+                    {ticketMessage?.description}
+                  </p>
+                  {
+                    ticketMessage?.images?.map((img, index) => {
+                      return <img key={index} className="mb-3" src={`http://194.5.192.82:4000/api/v1/admin/ticketImages/${img.imageUrl}`} />
+                    })
+                  }
+                  <p className={`${ticketMessage.role === "admin" ? "text-left" : "text-right"} mb-0 is-size-7 text-gray-blue`}> {DateConvert.toShamsiDate(ticketMessage.createdAt, { month: "short" })} </p>
+                </div>
+              </div>
+
+              {
+                ticketMessage.messages?.map((item, index) => {
+                  return (
+                    <div key={index} className={`${item.role === "admin" ? Styles.admin : null} 
+                    d-flex flex-wrap flex-row-reverse align-items-start w-100 mb-4 px-3`}>
+                      <div className={`${Styles.userMessage} shadow p-3`}>
+                        <p className="mb-2 text-blue is-size-6">
+                          {item.message}
+                        </p>
+
+                        {
+                          item.images.map((img, index) => {
+                            return <img key={index} className="mb-3" src={`http://194.5.192.82:4000/api/v1/admin/ticketImages/${img.imageUrl}`} />
+                          })
+                        }
+                        <p className={`${item.role === "admin" ? "text-left" : "text-right"} mb-0 is-size-7 text-gray-blue`}>{DateConvert.toShamsiDate(item.createdAt, { month: "short" })}</p>
+                      </div>
+                    </div>
+                  )
+                })
+              }
+            </div>
+
+          </div>
+        </div>
+        <div className={Styles.footer}>
+          <div className={`${Styles.previewUpload} ${uploadedImage.length ? Styles.show : null}`}>
+
+
+            <div className={`${Styles.uploadedFiles} px-3 d-flex align-items-center`}>
+              {
+                uploadedImage.map((item, index) => {
+                  return (
+                    <div className={`${Styles.uploadedBox} `} key={index}>
+                      <img src={URL.createObjectURL(item)} />
+                      <span onClick={() => handleRemoveImg(index)} className={Styles.delete}><IoMdClose /></span>
+                    </div>
+                  )
+                })
+              }
+            </div>
+          </div>
+
+          <div className={`${Styles.formTicket} pt-3`}>
+            <Formik
+              initialValues={{ message: "" }}
+              onSubmit={(values, actions) => {
+                createTicketMessage(values)
+                actions.resetForm();
+              }}
+              validationSchema={ticketValidator.chat}
+            >
+              {({ isValid, dirty }) => (
+                <Form className="d-flex justify-content-between align-items-center">
+                  <div className={`${Styles.area} px-3`}>
+
+                    <FastField
+                      maxRows="3"
+                      placeholder="پیغام خود را وارد کنید"
+                      rows="1"
+                      className="p-3"
+                      // onChange={(e) => setMessageValue(e.target.value)}
+                      name="message"
+                      as={CustomizedTextarea}
+                    />
+
+                  </div>
+                  <div className={`${Styles.icon} px-3 d-flex align-items-center justify-content-end`}>
+                    <div className={`${Styles.attachFile} ${Styles.btns}`}>
+                      <input type="file" name="images" className={`${Styles.input} pointer `}
+                        onChange={(e) => { setUploadedImage(prev => ([...prev, e.target.files[0]])) }
+                        }
+                      />
+                      <ImAttachment size="30" className="ml-5 pointer" title="افزودن عکس" />
+                    </div>
+
+                    <button type="submit" className={`${Styles.btns} ${Styles.submitBtn}`} ><MdSend size="30" className={`${Styles.rotate} pointer`} title="ارسال" /></button>
+
+                  </div>
+                </Form>
+              )}
+            </Formik>
+          </div>
+
+        </div>
+      </div>
+    </div >
+  );
+}

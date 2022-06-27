@@ -1,0 +1,23 @@
+.networkInputCustomized {
+  box-shadow: 0 0px 4px rgba($color: #000000, $alpha: 0.05);
+  border: 1px solid #e6ebfd;
+  padding: 1rem 0.5rem;
+  height: auto;
+  border-radius: 10px;
+
+  img.imgIcon {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.selectionLabel {
+  color: #909aa6;
+  margin-bottom: 0.25rem;
+}
+
+.ModalLink{
+  position: absolute;
+  left: 30px;
+  top:50%;
+}

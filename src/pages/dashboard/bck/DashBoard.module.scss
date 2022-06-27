@@ -1,0 +1,88 @@
+.container {
+    display: grid;
+    grid-gap: 10px;
+    direction: ltr;
+    grid-template-areas:
+        "usersCount usdtPrice usdtPrice profits profits profits profits profits spotWallet spotWallet "
+        "onlineUsersCount fiatWallet fiatWallet profits profits profits profits profits spotWallet spotWallet"
+        "dailyOrdersCount fiatWallet fiatWallet profits profits profits profits profits spotWallet spotWallet"
+        "fiatOrders fiatOrders fiatOrders limitOrders limitOrders limitOrders marketOrders marketOrders marketOrders withdrawCount"
+        "fiatOrders fiatOrders fiatOrders limitOrders limitOrders limitOrders marketOrders marketOrders marketOrders identityCount"
+        "fiatOrders fiatOrders fiatOrders limitOrders limitOrders limitOrders marketOrders marketOrders marketOrders bankAccountCount"
+        "fiatOrders fiatOrders fiatOrders limitOrders limitOrders limitOrders marketOrders marketOrders marketOrders ticketCount"
+    ;
+    grid-template-rows: auto;
+    grid-template-rows: minmax(80px, auto) minmax(80px, auto) minmax(80px, auto) minmax(80px, auto) minmax(80px, auto) minmax(80px, auto) minmax(80px, auto);
+
+    .gridItems {
+        direction: rtl;
+    }
+
+    .spotWallet {
+        grid-area: spotWallet
+    }
+
+    .profits {
+        grid-area: profits
+    }
+
+    .usdtPrice {
+        grid-area: usdtPrice
+    }
+
+    .fiatWallet {
+        grid-area: fiatWallet
+    }
+
+    .usersCount {
+        grid-area: usersCount
+    }
+
+    .onlineUsersCount {
+        grid-area: onlineUsersCount
+    }
+
+    .dailyOrdersCount {
+        grid-area: dailyOrdersCount
+    }
+
+    .withdrawCount {
+        grid-area: withdrawCount
+    }
+
+    .identityCount {
+        grid-area: identityCount
+    }
+
+    .bankAccountCount {
+        grid-area: bankAccountCount
+    }
+
+    .ticketCount {
+        grid-area: ticketCount
+    }
+
+    .marketOrders {
+        grid-area: marketOrders
+    }
+
+    .limitOrders {
+        grid-area: limitOrders
+    }
+
+    .fiatOrders {
+        grid-area: fiatOrders
+    }
+}
+
+.rialChart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    .rialAmount {
+        position: absolute;
+    }
+}

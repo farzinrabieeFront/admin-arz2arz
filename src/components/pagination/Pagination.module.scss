@@ -1,0 +1,74 @@
+@import '/src/assets/scss/mixins/responsive';
+
+.pagination {
+  // background-color: red;
+
+  li {
+    a {
+      font-family: "FaNum";
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -ms-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &:hover {
+      color: #0072ff;
+      font-weight: 900;
+    }
+  }
+
+  .active {
+    border-bottom: 1px solid #0072ff !important;
+  }
+
+  .previous,
+  .next {
+    &:hover {
+      color: #0072ff;
+      font-weight: 900;
+
+      a {
+        //   background-color: #fff;
+        //   font-size: 1.3rem;
+      }
+    }
+  }
+}
+
+.goToPage {
+  max-width: 50px;
+}
+
+@include breakpoint(sm) {
+  .PageInput {
+    display: none !important;
+  }
+}
+
+// .pagination {
+
+//     ul {
+//         margin-bottom: 0;
+//         list-style-type: none !important;
+//         li {
+//             width: 30px;
+//             margin: 0 5px;
+//             height: max-content;
+
+//             a {
+//                 font-weight: bold;
+//                 height: max-content;
+//                 font-size: 1rem;
+//                 padding-top: 4px;
+//                 padding-bottom: 1px;
+
+//                 &:focus {
+//                     outline: none;
+//                 }
+//             }
+//         }
+
+//     }
+// }

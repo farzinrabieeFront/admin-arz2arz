@@ -1,0 +1,64 @@
+@import '/src/assets/scss/mixins/responsive';
+
+.uploadImage {
+    border: 3px dashed #E6EBFD;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+
+    img {
+        width: 100%;
+        height: 135px;
+    }
+
+    &.uploading {
+        .progressBar {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba($color: #000000, $alpha: 0.5);
+        }
+    }
+
+    &.uploaded {
+        .button {
+            position: absolute;
+            bottom: 2px;
+            right: 0;
+        }
+    }
+
+    &.uploadMore {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-content: center;
+        cursor: pointer;
+
+        img {
+            width: auto !important;
+            height: auto !important;
+        }
+    }
+}
+
+ 
+@include breakpoint(sm) {
+
+    .uploadImage {
+        img {
+            height: auto;
+        }
+        &.uploadMore {
+            img {
+                width: 32px !important;
+                margin-top: 5px;
+            }
+        }
+    }
+}

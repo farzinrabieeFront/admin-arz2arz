@@ -1,0 +1,114 @@
+@import "font";
+@import 'mixins/responsive';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  font-family: "IRANyekan";
+  text-align: right;
+  outline: none;
+}
+
+html {
+  direction: rtl;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  min-height: 100%;
+  height: -webkit-fill-available;
+}
+
+body {
+  height: 100%;
+  cursor: default;
+  font-family: "IRANyekan";
+  position: relative;
+  -webkit-transition: background-color 0.5s ease;
+  -moz-transition: background-color 0.5s ease;
+  -o-transition: background-color 0.5s ease;
+  transition: background-color 0.5s ease;
+
+  &.background_light {
+    background-color: #f8f9fa;
+    color: #344767;
+  }
+
+  &.background_dark {
+    background-color: #141B2D;
+    color: #fff;
+  }
+}
+
+ul {
+  list-style-type: none;
+
+  li {
+    display: flex;
+    align-items: center;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  color: unset;
+}
+
+a,
+span,
+p {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+#root {
+  min-height: 100%;
+  width: 100%;
+
+}
+
+.FaNum {
+  font-family: 'FaNum';
+  font-weight: bold;
+}
+
+.en {
+  font-family: 'roboto';
+  font-weight: normal;
+}
+
+@include breakpoint(md) {
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

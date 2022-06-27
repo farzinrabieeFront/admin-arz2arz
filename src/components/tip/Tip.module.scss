@@ -1,0 +1,82 @@
+.tip {
+  background-color: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  border-right-width: 5px;
+
+  .title {
+    font-weight: 800;
+    color: #000;
+
+    .icon {
+      vertical-align: middle;
+    }
+  }
+  &.dark {
+    background-color: #141b2d;
+    border-color: #1d2435;
+  }
+}
+
+.tip[variant="danger"] {
+  border-right-color: #d9534f;
+
+  .icon {
+    color: #d9534f;
+  }
+  &.dark {
+    .title {
+      color: #d9534f;
+    }
+  }
+}
+
+.tip[variant="info"] {
+  border-right-color: #5bc0de;
+
+  .icon {
+    color: #5bc0de;
+  }
+  &.dark {
+    .title {
+      color: #5bc0de;
+    }
+  }
+}
+
+.tip[variant="success"] {
+  border-right-color: #00c56e;
+
+  .icon {
+    color: #00c56e;
+  }
+  &.dark {
+    .title {
+      color: #00c56e;
+    }
+  }
+}
+
+.tip[variant="warning"] {
+  border-right-color: #ffc107;
+  .icon {
+    color: #ffc107;
+  }
+  &.dark {
+    .title {
+      color: #ffc107;
+    }
+  }
+}
+
+.tip[variant="secondary"] {
+  border-right-color: #6c757d;
+  .icon {
+    color: #6c757d;
+  }
+  &.dark {
+    .title {
+      color: #6c757d;
+    }
+  }
+}

@@ -1,0 +1,114 @@
+@import "../../assets/scss/mixins/responsive";
+
+.header {
+  background-color: #141b2d;
+  border-radius: 10px;
+}
+
+.currency {
+  .icon {
+    img {
+      width: 25px;
+      height: 25px;
+      border-radius: 100%;
+    }
+  }
+}
+
+.titleBlur {
+  width: 92%;
+  margin: 0 auto;
+}
+
+.note {
+  white-space: normal;
+}
+
+.bg {
+  .info {
+    position: absolute;
+    border-radius: 10px;
+    padding: 20px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 90%;
+    bottom: -40px;
+    z-index: 9;
+  }
+}
+
+.avatar {
+  border-radius: 0.75rem;
+  flex: 0 0 74px;
+  max-width: 74px;
+  height: 74px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 74px;
+  }
+}
+
+.imgIdentity {
+  .img {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: 15px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    img {
+      width: 100%;
+      height: 160px;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      background: rgba(20, 27, 45, 0.5);
+    }
+
+    &.noImg {
+      flex-direction: column;
+
+      img {
+        width: auto;
+        height: 50px;
+      }
+
+      &:before {
+        display: none;
+      }
+    }
+
+    .icon {
+      position: absolute;
+      z-index: 9;
+    }
+  }
+}
+
+@include breakpoint(sm) {
+  .avatar {
+    display: none !important;
+  }
+
+  .bg {
+    .info {
+      position: relative;
+      width: 100%;
+      bottom: auto;
+      margin-top: 1rem;
+    }
+  }
+}

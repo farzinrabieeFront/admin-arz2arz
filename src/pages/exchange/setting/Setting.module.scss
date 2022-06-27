@@ -1,0 +1,33 @@
+// .box {
+//     border: 1px solid #dbdfe3;
+//     border-radius: 5px;
+//     overflow: hidden;
+
+
+
+.form,
+.table {
+    border: 1px solid #eff0f2;
+}
+
+
+.dark {
+    border: 1px solid #464a53;
+
+    .title {
+        background-color: #444e65;
+        border-bottom: 1px solid #464a53;
+    }
+
+    .form,
+    .table {
+        box-shadow: 0 0.01rem 0.375rem -0.0625rem rgba(255, 255, 255, 0.12),
+            0 0.01rem 0.25rem -0.0625rem rgba(255, 255, 255, 0.07) !important;
+    }
+
+}
+
+// }
+.title {
+    border-bottom: 1px solid #eff0f2;
+}

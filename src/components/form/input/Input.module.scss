@@ -1,0 +1,101 @@
+@import "/src/assets/scss/mixins/responsive";
+@import "/src/assets/scss/colors";
+
+.inputLabel {
+  color: #afb7cb;
+  margin-bottom: 0.5rem;
+}
+
+.input {
+  background-color: #fff;
+  min-height: 40px;
+  position: relative;
+
+  &.dark {
+    background-color: #314054;
+    color: #fff;
+    border-color: #314054;
+  }
+
+  &.lightInput {
+    background-color: #fff;
+    color: #465066;
+    border-color: #ced4da;
+  }
+}
+
+.icon {
+  position: absolute;
+  bottom: 9px;
+  left: 10px;
+}
+
+.textArea {
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.prepend,
+.coinIcon,
+.rialImg,
+.inputBelowText,
+.inputErrorText {
+  position: absolute;
+}
+
+.inputBelowText {
+  bottom: -5px;
+  right: 5px;
+  background: #fff;
+}
+
+.inputErrorText {
+  top: 80%;
+  left: 16px;
+  background: #fff;
+  &.dark {
+    background: rgb(31, 41, 64);
+    background: linear-gradient(
+      0deg,
+      rgba(31, 41, 64, 1) 0%,
+      rgba(49, 64, 83, 1) 100%
+    );
+  }
+}
+
+.prepend {
+  bottom: 8px;
+  left: 0;
+  // padding: 9px;
+  border-right: 1px solid #ced4da;
+  height: 25px;
+  color: #909aa6;
+  font-weight: bold;
+  width: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.prependPadding {
+  padding-left: 40px !important;
+}
+
+.textInput {
+  padding-left: 3rem;
+}
+
+.textIcon {
+  position: absolute;
+  top: 37px;
+  left: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #dde2e8;
+}
+
+@include breakpoint(sm) {
+  .inputLabel {
+    font-size: 10px !important;
+    top: -9px;
+  }
+}
